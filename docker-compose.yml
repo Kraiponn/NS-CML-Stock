@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  pdstock_db:
+    image: postgres:14.3
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pgadmin
+      POSTGRES_DB: pdstock_db
+    volumes:
+      - pdstockdb_vol:/var/lib/postgresql/data
+    networks:
+      - pdstock_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - pdstock_db
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    volumes:
+      - pdstockpg_vol:/var/lib/pgadmin
+    networks:
+      - pdstock_net
+
+volumes:
+  pdstockdb_vol:
+  pdstockpg_vol:
+
+networks:
+  pdstock_net:
