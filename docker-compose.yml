@@ -30,9 +30,20 @@ services:
     networks:
       - pdstock_net
 
+  caching_db:
+    image: redis
+    restart: always
+    ports:
+      - 5002:6379
+    volumes:
+      - pdstock_caching_vol:/data
+    networks:
+      - pdstock_net
+
 volumes:
   pdstockdb_vol:
   pdstockpg_vol:
+  pdstock_caching_vol:
 
 networks:
   pdstock_net:

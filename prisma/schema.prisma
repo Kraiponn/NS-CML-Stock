@@ -12,33 +12,50 @@ datasource db {
 }
 
 model User {
-  id                  Int      @id @default(autoincrement())
-  name                String
-  email               String   @unique
-  hashed_password     String
-  hashed_refreshtoken String
-  phone               String
-  role                Role     @default(MEMBER)
-  Profile             Profile?
+  id                 Int      @id @default(autoincrement())
+  name               String
+  email              String   @unique
+  hashedPassword     String
+  hashedRefreshToken String?
+  phone              String
+  role               Role     @default(EMPLOYEE)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
+  @@index([name, email])
   @@map("users")
 }
 
-model Profile {
-  id      Int    @id @default(autoincrement())
-  image   String @default("nopic.png")
-  user_id Int    @unique
-  user    User   @relation(fields: [user_id], references: [id])
+model Category {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Product     Product[]
+
+  @@index([title])
+  @@map("categories")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  image       String   @default("nopic.png")
+  price       Float
+  inStock     Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([title, price])
+  @@map("products")
 }
 
 enum Role {
-  MEMBER
+  EMPLOYEE
   MANAGER
   ADMIN
-}
-
-enum HomeType {
-  TOWNHOME
-  SINGLE_DETACHED_HOUSE
-  SEMI_DETACHED_HOUSE
 }
