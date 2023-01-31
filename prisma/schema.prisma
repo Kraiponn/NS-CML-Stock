@@ -32,26 +32,37 @@ model Category {
   description String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  Product     Product[]
+  products    Product[]
 
   @@index([title])
   @@map("categories")
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          Int            @id @default(autoincrement())
   title       String
   description String?
-  image       String   @default("nopic.png")
   price       Float
   inStock     Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
   categoryId  Int
-  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category    Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  images      ProductImage[]
 
   @@index([title, price])
   @@map("products")
+}
+
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  url       String   @default("nopic.png")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("productImages")
 }
 
 enum Role {

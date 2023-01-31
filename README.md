@@ -8,7 +8,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<span style="font-weight: 800; color:yellow">Rest API</span> for product stock, authentication, authorization, caching and more.
 
 ## Installation
 
@@ -42,16 +42,7 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## Support
+## Contact Me
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Author - [Kraipon Najaroon](https://www.github.com/kraiponn)
 - Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Request } from 'express';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { JWT_REFRESH_KEY } from 'src/common/utils/consts.util';
+import { JWT_REFRESH_KEY } from 'src/shared/utils/consts.util';
 import { IJwtPayload, IJwtPayloadWithRefreshToken } from '../interfaces';
 
 @Injectable()

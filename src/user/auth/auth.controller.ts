@@ -10,12 +10,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Role } from '@prisma/client';
-import { GetUser, GetUserId, Roles } from 'src/common/decorators';
+import { GetUser, GetUserId, Roles } from 'src/shared/decorators';
 import {
   AccessTokenGuard,
   RefreshTokenGuard,
   RolesGuard,
-} from 'src/common/guards';
+} from 'src/shared/guards';
 import { UserUpdateDTO, UserUpdatePwdDTO } from '../common/dtos';
 import { UserResponseDTO } from '../common/dtos/response.dto';
 
