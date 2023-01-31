@@ -29,6 +29,37 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Prisma official document
+
+<p style="text-indent:50px"><a href="https://www.prisma.io/docs/concepts">Prisma</a> is an open-source ORM for Node.js and TypeScript. It is used as an alternative to writing plain SQL, or using another database access tool such as SQL query builders (like knex.js) or ORMs (like TypeORM and Sequelize). Prisma currently supports PostgreSQL, MySQL, SQL Server, SQLite, MongoDB and CockroachDB (Preview).</p>
+
+## Prisma packages in use
+
+- [Prisma Cli](https://www.npmjs.com/package/prisma)
+- [Prisma Client](https://www.npmjs.com/package/@prisma/client)
+
+## Prisma command
+
+```bash
+  # Create initial prisma
+  $ npx prisma init
+
+  # Generate your SQL migration files and run them against the database
+  $ npx prisma migrate dev
+  $ npx prisma migrate dev --name <Migration Name>
+  $ npx prisma migrate dev --create-only
+
+  # Production and testing environments
+  $ npx prisma migrate deploy
+
+  # Prototype your schema
+  $ npx prisma db push
+  $ npx prisma db pull
+
+  # Reset the development database
+  $ npx prisma migrate reset
+```
+
 ## Test
 
 ```bash
